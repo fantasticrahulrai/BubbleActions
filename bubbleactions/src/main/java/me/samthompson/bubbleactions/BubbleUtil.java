@@ -3,7 +3,7 @@ package me.samthompson.bubbleactions;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
-import android.support.v4.content.res.ResourcesCompat;
+import androidx.core.content.res.ResourcesCompat;
 
 /**
  * A collection of helper methods for use with BubbleActions.
