@@ -25,3 +25,54 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
+ext {
+    BINTRAY_KEY = bintrayKey()
+    VERSION_NAME = version()
+    VERSION_CODE = versionCode().toInteger()
+    SITE_URL = 'https://github.com/SamThompson/BubbleActions'
+    GIT_URL = 'https://github.com/SamThompson/BubbleActions.git'
+    BINTRAY_USER = 'samthompson'
+    GROUP_NAME = 'me.samthompson'
+    COMPILE_SDK = 23
+    BUILD_TOOLS = '23.0.2'
+    IS_UPLOADING = project.getGradle().startParameter.taskNames.any{it.contains('bintrayUpload')}
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+task version doLast {
+    println version()
+}
+
+def String version() {
+    def versionPropsFile = file('version.properties')
+    def Properties versionProps = new Properties()
+    versionProps.load(new FileInputStream(versionPropsFile))
+
+    return versionProps['major'] + "." + versionProps['minor'] + "." + versionProps['patch']
+}
+
+def String versionCode() {
+    def versionPropsFile = file('version.properties')
+    def Properties versionProps = new Properties()
+    versionProps.load(new FileInputStream(versionPropsFile))
+
+    return versionProps['code']
+}
+
+def String bintrayKey() {
+    def privatePropsFile = file("private.properties")
+    if (privatePropsFile.exists()) {
+        Properties props = new Properties()
+        props.load(new FileInputStream(privatePropsFile))
+        return props['BINTRAY_KEY']
+    } else {
+        return ""
+    }
+}
+
+

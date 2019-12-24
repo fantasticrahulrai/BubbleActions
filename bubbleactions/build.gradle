@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
-group='com.github.fantasticrahulrai'
+apply plugin: 'bintray-release'
 
 android {
     compileSdkVersion 29
@@ -24,5 +23,17 @@ android {
 dependencies {
     compile 'androidx.appcompat:appcompat:1.1.0'
 }
+
+publish {
+    userOrg = 'fantasticrahulrai'
+    artifactId = 'bubble-actions'
+    version = VERSION_NAME
+    description = 'An open source implementation of the long press actions in the Pinterest app.'
+    website = SITE_URL
+    bintrayUser = BINTRAY_USER
+    bintrayKey = BINTRAY_KEY
+    licences = ['Apache-2.0']
+}
+
 
 
