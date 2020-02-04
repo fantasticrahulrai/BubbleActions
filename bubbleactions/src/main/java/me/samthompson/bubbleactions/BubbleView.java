@@ -1,8 +1,8 @@
 package me.samthompson.bubbleactions;
 
 import android.content.Context;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.ViewPropertyAnimatorListenerAdapter;
+import android.support.v4.view.ViewCompat;
+import android.support.v4.view.ViewPropertyAnimatorListenerAdapter;
 import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.View;
